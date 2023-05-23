@@ -12,8 +12,8 @@ app.use(express.json());
 
 // matching public keys generated from scripts/generate.js
 const balances = {
-  "039a954f59ca0d3a3fde3149214e82d6296b4e54b185d898a32760a2465ea39318": 100,
-  "0220e4e97938ad34599e95fef72590744df94d84e60ee899e4df021a8b591cb89b": 50,
+  "03b19fc114baa5ad8487c58f67f1f0be72f393a539a6662210984cc275084294a8": 100,
+  "03c31b8e5b7fa82777b7b6c8343a7e6716870bafcd99750afcd711b1c307f44b2f": 50,
   "02b0180b42fbbebb2f7490b308b21ab1d61809053090fb07bccdeccf3e3d59aea9": 75,
 };
         
@@ -32,7 +32,7 @@ app.post("/send", (req, res) => {
   
   const signature = secp256k1.Signature.fromDER(sender).addRecoveryBit(0); 
   let senderPublic = signature.recoverPublicKey(hash).toHex();
-  console.log("recoverPublicKey(from end-point) " + sender);
+  console.log("recoverPublicKey (from end-point) " + senderPublic);
   
   // TODO get amount from hash?
   
